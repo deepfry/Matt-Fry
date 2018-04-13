@@ -1,0 +1,55 @@
+extends layout
+block head
+	title= 'Rushelle.com - Portfolio'
+block content
+	section
+		.container
+			ul.nav.nav-pills.sort-source(data-sort-id='portfolio', data-option-key='filter', data-plugin-options="{'layoutMode': 'masonry', 'filter': '*'}")
+				li.active(data-option-value='*')
+					a(href='#') Show All
+				for item in contentful.categories
+					li(data-option-value='.#{item.categorySlug}')
+						a(href='#')= item.categoryName
+			hr
+			.row
+				
+				//-.sort-destination-loader.sort-destination-loader-showing
+					ul.portfolio-list.sort-destination(data-sort-id='portfolio')
+						for item in contentful.featured	
+							- var classes = ''
+							if item.category.length > 0
+								for item2 in item.category
+									- classes += ' ' + item2.fields.categorySlug
+							li.col-md-4.isotope-item(class="#{classes}")
+								.portfolio-item
+									a(href='#{item._url}')
+										span.thumb-info.thumb-info-centered-info.thumb-info-no-borders
+											span.thumb-info-wrapper
+												img.img-responsive(src='#{item._url}', alt='')
+												span.thumb-info-title
+													span.thumb-info-inner= item.title
+													if item.category.length > 0
+														for item3 in item.category
+															span.thumb-info-type= item3.fields.categoryName
+												
+
+
+				ul.portfolio-list.sort-destination(data-sort-id='portfolio')
+					
+					for item in contentful.gallery
+						//-p= JSON.stringify(item)
+						- var classes = ''
+						if item.category.length > 0
+							for item2 in item.category
+								- classes += ' ' + item2.fields.categorySlug
+						li.col-md-4.col-sm-6.col-xs-12.isotope-item(class="#{classes}")
+							.portfolio-item
+								a(href='#{item._url}')
+									span.thumb-info.thumb-info-centered-info.thumb-info-no-borders
+										span.thumb-info-wrapper
+											img.img-responsive(src='#{asset(item.images[0])}', alt='')
+											span.thumb-info-title
+												span.thumb-info-inner= item.title
+												if item.category.length > 0
+													for item3 in item.category
+														span.thumb-info-type= item3.fields.categoryName

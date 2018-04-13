@@ -1,0 +1,43 @@
+header#header.header-narrow.header-full-width(data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 0, 'stickySetTop': '0'}")
+				.header-body.bg-gradient
+					.header-container.container
+						.header-row
+							.header-column
+								.header-logo
+									a(href='/')
+										img.logo(alt='Logo', src='/img/logo/logo-header-white.png')
+							.header-column
+								.header-row
+									.header-nav
+										button.btn.header-btn-collapse-nav(data-toggle='collapse', data-target='.header-nav-main')
+											i.fa.fa-bars
+										ul.header-social-icons.social-icons.hidden-xs
+											li.social-icons-facebook
+												a(href='https://www.facebook.com/Rushelle-Kucalas-Art-153576954716697', target='_blank', title='Facebook')
+													i.fa.fa-facebook
+											li.social-icons-deviantart
+												a(href='https://thedragonofdoom.deviantart.com/', target='_blank', title='Twitter')
+													i.fa.fa-deviantart
+											li.social-icons-instagram
+												a(href='https://www.instagram.com/rushellekucala/', target='_blank', title='Instagram')
+													i.fa.fa-instagram
+										.header-nav-main.header-nav-main-effect-1.header-nav-main-sub-effect-1.collapse
+											nav
+												ul#mainNav.nav.nav-pills
+													li.dropdown-full-color.dropdown-primary
+														a(href='/')
+															| Home
+													li.dropdown-full-color.dropdown-primary
+														a(href='/about')
+															| About
+														
+													li.dropdown-full-color.dropdown-primary
+														a(href='/portfolio')
+															| Portfolio
+													//-li.dropdown-full-color.dropdown-primary
+														a(href='/blog')
+															| Blog
+													li.dropdown-full-color.dropdown-primary
+														a(href='/contact')
+															| Contact
+														

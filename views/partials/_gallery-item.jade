@@ -1,0 +1,72 @@
+extends /layout
+block head
+	title= 'Rushelle.com - ' + entry.title
+	meta(property="og:image" content="#{asset(entry.images[0])}")
+	meta#page-title(property="og:title" content= entry.title)
+	meta#page-description(property="og:description" content= entry.description)
+block content
+	section
+		.container.lightbox(data-plugin-options="{'delegate': '.portfolio-item>a', 'type': 'image', 'gallery': {'enabled': true}}")
+			.row
+				.col-md-12.isotope-item
+					.portfolio-item
+						a(href='#{asset(entry.images[0])}')
+							span.thumb-info.thumb-info-centered-info.thumb-info-no-borders
+								span.thumb-info-wrapper
+									img.img-responsive(src='#{asset(entry.images[0])}', alt='')
+									span.thumb-info-title
+										span.thumb-info-inner= entry.images[0].fields.title
+										span.thumb-info-type 
+											i.fa.fa-search-plus
+			if entry.images.length > 1	
+				- var colClass = (entry.images.length -1 > 4) ? 'col-md-4 col-sm-6' : 'col-sm-6'
+				.row
+					ul.nav.nav-pills.sort-source(data-sort-id='portfolio', data-option-key='filter', data-plugin-options="{'layoutMode': 'masonry', 'filter': '*'}" style="display:none;")
+						li.active(data-option-value='*')
+							a(href='#') Show All
+						li(data-option-value='.websites')
+							a(href='#') Websites
+						li(data-option-value='.logos')
+							a(href='#') Logos
+						li(data-option-value='.brands')
+							a(href='#') Brands
+						li(data-option-value='.medias')
+							a(href='#') Medias
+					ul.portfolio-list.sort-destination(data-sort-id='portfolio', style="margin-top:50px;")
+						
+						
+						- for(var i = 1; i < entry.images.length; ++i){
+							li.isotope-item(class='#{colClass}')
+								.portfolio-item
+									a(href='#{asset(entry.images[i])}')
+										span.thumb-info.thumb-info-centered-info.thumb-info-no-borders
+											span.thumb-info-wrapper
+												img.img-responsive(src='#{asset(entry.images[i])}', alt='')
+												span.thumb-info-title
+													span.thumb-info-inner= entry.images[i].fields.title
+													span.thumb-info-type 
+														i.fa.fa-search-plus
+						
+						-}
+											
+	section
+		.container
+			.row
+				.col-sm-12
+					- var date = new Date(entry.date);
+					h1.unmarg= entry.title
+					h3= date.getFullYear()
+					hr
+			.row
+				.col-sm-12
+					p= entry.description
+					!= entry.signature.fields.text
+			.row
+				.col-sm-12
+					h3 Share
+			#share-icons.row
+				.col-sm-12
+					a.facebook-share(href="#" rel="noopener" target="_blank")
+						i.fa.fa-facebook
+					a.twitter-share(href="#" rel="noopener" target="_blank")
+						i.fa.fa-twitter

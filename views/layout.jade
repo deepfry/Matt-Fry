@@ -1,0 +1,42 @@
+doctype html
+html.photography-demo-2
+
+	head
+		meta(charset='utf8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge, chrome=1')
+		meta(name='description', content='Rushelle Kucala Concept Art Portfolio')
+		meta(name='author', content= "JJ Fry")
+		link(rel="icon" href="/img/logo/icon-color.png")
+		//- uncomment if your site is responsive!
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		
+		
+		link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Roboto+Slab:100,300,400,700', rel='stylesheet')
+
+		!= css("/")
+		- var pageClass = /((?!\/)\w+(?=\.))/.exec(_path) == null ? '' : /((?!\/)\w+(?=\.))/.exec(_path)
+		- if(pageClass[0] === undefined && entry != null & entry.sys.contentType.sys.id != undefined){pageClass = entry.sys.contentType.sys.id}
+		- else{pageClass = pageClass[0]}
+		- console.log('loading a page type: ' + pageClass)
+		script.
+			var pageClass = '#{pageClass}'
+		block head
+	//-- console.log(_path)
+	body.loading-overlay-showing(data-loading-overlay, class="#{pageClass}")
+		include partials/_header
+		.content
+			block content
+		include partials/_footer
+
+		!= js("/")
+		script(src='https://use.typekit.net/xdy2gst.js')
+		script.
+			try{Typekit.load({ async: true });}catch(e){}
+
+		// Global Site Tag (gtag.js) - Google Analytics
+		script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-106641857-1')
+		script.
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments)};
+			gtag('js', new Date());
+			gtag('config', 'UA-106641857-1');

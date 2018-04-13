@@ -1,0 +1,92 @@
+extends layout
+block head
+	title= 'Rushelle.com'
+	script(src="https://identity.netlify.com/v1/netlify-identity-widget.js")
+block content
+
+	//-section.page-header.parallax.section.section-text-light.section-parallax.section-center.height-70.unmarg-t(data-plugin-parallax='', data-plugin-options="{'speed': 1.5}", data-image-src='/img/test.jpg')
+		.container
+			.row
+				.col-md-8.col-md-offset-2
+					h4 Default Parallax Section
+					p.mb-none
+						| Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
+						br
+						| Nulla consequat massa quis enim.Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.Aenean vulputate eleifend tellus.
+
+
+	.slider-container.rev_slider_wrapper(style='height: 500px;')
+		.logo-overlay
+		#revolutionSlider.slider.rev_slider.manual
+
+			ul
+				for item in contentful.homeslider
+					li(data-transition='fade')
+						img.rev-slidebg(src='#{asset(item.image)}', alt='', data-bgposition='center center', data-bgfit='cover', data-bgrepeat='no-repeat', data-kenburns='on', data-duration='10000', data-ease='Linear.easeNone', data-scalestart='110', data-scaleend='100', data-offsetstart='100 100', data-offsetend='-100 100')
+						
+
+
+						.tp-caption.tp-caption-photo-label(data-x="['left','left','left','left']", data-hoffset="['0','0','0','0']", data-y="['bottom','bottom','bottom','bottom']", data-voffset="['28','28','28','28']", data-start='200', data-basealign='slide', data-transform_in='y:[-200%];opacity:0;s:1000;')= item.title
+					
+				//-li(data-transition='fade')
+					img.rev-slidebg(src='img/test.jpg', alt='', data-bgposition='center center', data-bgfit='cover', data-bgrepeat='no-repeat', data-kenburns='on', data-duration='10000', data-ease='Linear.easeNone', data-scalestart='110', data-scaleend='100', data-offsetstart='150 100', data-offsetend='-150 -150')
+					.tp-caption.tp-caption-photo-label(data-x="['left','left','left','left']", data-hoffset="['28','28','28','28']", data-y="['bottom','bottom','bottom','bottom']", data-voffset="['28','28','28','28']", data-start='200', data-basealign='slide', data-transform_in='y:[-200%];opacity:0;s:1000;') The Landscape
+
+
+	section
+		.container
+			ul.nav.nav-pills.sort-source(data-sort-id='portfolio', data-option-key='filter', data-plugin-options="{'layoutMode': 'masonry', 'filter': '*'}", style="display:none;")
+				li.active(data-option-value='*')
+					a(href='#') Show All
+				for item in contentful.categories
+					li(data-option-value='.#{item.categorySlug}')
+						a(href='#')= item.categoryName
+				
+			//-hr
+			.row
+				.col-sm-12
+					h1.unmarg Featured Artwork
+			hr
+			.row
+				
+				ul.portfolio-list.sort-destination(data-sort-id='portfolio')
+					
+					for item in contentful.featured
+						//-p= JSON.stringify(item)
+						- var classes = ''
+						if item.category.length > 0
+							for item2 in item.category
+								- classes += ' ' + item2.fields.categorySlug
+						li.col-md-4.col-sm-6.col-xs-12.isotope-item(class="#{classes}")
+							.portfolio-item
+								a(href='#{item._url}')
+									span.thumb-info.thumb-info-centered-info.thumb-info-no-borders
+										span.thumb-info-wrapper
+											img.img-responsive(src='#{asset(item.images[0])}', alt='')
+											span.thumb-info-title
+												span.thumb-info-inner= item.title
+												if item.category.length > 0
+													for item3 in item.category
+														span.thumb-info-type= item3.fields.categoryName
+
+						//-li.col-md-3.col-sm-6.col-xs-12.isotope-item.brands
+							.portfolio-item
+								a(href='portfolio-single-small-slider.html')
+									span.thumb-info.thumb-info-centered-info.thumb-info-no-borders
+										span.thumb-info-wrapper
+											img.img-responsive(src='img/proto/projects/project-masonry.jpg', alt='')
+											span.thumb-info-title
+												span.thumb-info-inner Presentation
+												span.thumb-info-type Brand
+	script.
+		if (window.netlifyIdentity) {
+			window.netlifyIdentity.on("init", user => {
+				if (!user) {
+					window.netlifyIdentity.on("login", () => {
+						document.location.href = "/admin/";
+					});
+				}
+			});
+		}
+
+						

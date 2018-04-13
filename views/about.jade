@@ -1,0 +1,25 @@
+extends layout
+block head
+	title= 'Rushelle.com - About'
+block content
+	#main.main(role='main')
+		.slider-container.rev_slider_wrapper.rev_about_us(style='height: 500px;')
+			#revolutionSlider.slider.rev_slider.manual
+				ul
+					for item in contentful.about[0].photos
+						li(data-transition='fade')
+							img.rev-slidebg(src='#{asset(item)}', alt='', data-bgposition='center center', data-bgfit='cover', data-bgrepeat='no-repeat', data-bgparallax='1', data-duration='10000')
+					
+					//-li(data-transition='fade')
+						img.rev-slidebg(src='/img/test.jpg', alt='', data-bgposition='center center', data-bgfit='cover', data-bgrepeat='no-repeat', data-bgparallax='2')
+				
+				//-.tp-static-layers
+					h1.tp-caption.tp-caption-photo-label.tp-caption-main-custom.tp-static-layer.font-weight-normal.text-color-light(data-x='center', data-hoffset='0', data-y='center', data-voffset='0', data-start='500', data-basealign='slide', data-startslide='0', data-endslide='99', data-transform_in='y:[-300%];opacity:0;s:500;', style='font-size: 56px;') We Are Porto Photography
+					
+					.tp-caption.tp-caption-photo-label.tp-caption-sub-custom.tp-static-layer.text-color-light(data-x='center', data-hoffset='0', data-y='center', data-voffset='60', data-start='800', data-basealign='slide', data-startslide='0', data-endslide='99', data-transform_in='y:[-300%];opacity:0;s:500;', style='font-size: 32px;') Nice to Meet You
+		section
+			.container
+				.row.center.pt-xlg.mt-xlg.pb-lg
+					.col-md-12
+						h2.font-weight-normal.custom-font-size-1.mb-lg= contentful.about[0].title
+						p= contentful.about[0].text

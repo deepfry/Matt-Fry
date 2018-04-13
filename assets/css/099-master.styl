@@ -1,0 +1,140 @@
+@import '_settings'
+
+normalize-css()
+base()
+
+// --- --- --- Fonts
+
+h1,h2,h3,h4,h5,h6
+	font-family $trajan !important
+	color $maroon !important
+p,a,span,input,textarea,pre
+	font-family $openSans !important
+
+
+
+// --- --- --- Colors
+.bg-gradient
+	for key, value in $gradient
+		{key}:value
+.btn
+	border-color $orange
+	background #fff
+	color $orange
+	transition 0.2s
+	&:hover
+		color #fff !important
+		border-color #fff !important
+		transition 0.2s
+		for key, value in $gradient
+			{key}:value
+
+
+
+
+
+// --- --- --- Misc Classes
+.height-10
+	height 10vh
+.height-20
+	height 20vh
+.height-30
+	height 30vh
+.height-40
+	height 40vh
+.height-50
+	height 50vh
+.height-60
+	height 60vh
+.height-70
+	height 70vh
+.height-80
+	height 80vh
+.height-90
+	height 90vh
+.height-100
+	height 100vh
+
+.unmarg-t
+	margin-top 0 !important
+.unmarg-b
+	margin-bottom 0 !important
+.unmarg
+	margin 0 !important
+
+section
+	padding 50px 0
+
+.content
+	min-height 100vh
+
+// --- --- --- Header
+header
+	.logo
+		height 70px
+		image-rendering -webkit-optimize-contrast
+.thumb-info .thumb-info-wrapper:after
+	for key, value in $gradientOverlay
+		{key}:value
+.page-header
+	top -10px
+#revolutionSlider
+	padding 0
+
+@media (max-width: 991px)
+	html #header .header-nav-main nav > ul > li.dropdown-full-color.dropdown-primary > a
+		color #fff !important
+
+
+
+// --- --- --- Gallery
+.thumb-info.thumb-info-title
+	font-size 14px !important
+.thumb-info-type
+	margin 0 5px
+	background-color $orange !important
+.logo-overlay
+	background-image url(/img/logo/icon-white.png)
+	background-position center center
+	background-size contain
+	background-repeat no-repeat
+	position absolute
+	top 0
+	bottom 0
+	left 0
+	right 0
+	margin auto
+	height 80%
+	z-index 30
+.slider-overlay
+	position absolute
+	height 100%
+	width 100%
+	for key, value in $gradient
+		{key}:value
+
+.tp-caption
+	for key, value in $gradient
+		{key}:value
+	padding 10px 20px 10px 28px !important
+
+ul.nav-pills > li.active > a
+	background-color $orange !important
+
+
+// --- --- --- Social
+#share-icons
+	a
+		padding 10px
+		height 40px
+		width 40px
+		display inline-block
+		font-size 25px
+		margin 0 10px
+		color #fff
+		transition 0.2s
+		border-radius 999px
+		for key, value in $gradient
+			{key}:value
+		&:hover
+			opacity .75
