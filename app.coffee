@@ -5,6 +5,7 @@ js_pipeline  = require 'js-pipeline'
 css_pipeline = require 'css-pipeline'
 contentful   = require 'roots-contentful'
 slugify      = require 'slugify'
+md           = require 'marked'
 
 monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]
 
@@ -13,6 +14,7 @@ module.exports =
 
 	locals:
 		basedir:'views'
+		md:require 'marked'
 
 	extensions: [
 		js_pipeline(files: ['assets/js/*.coffee', 'assets/**/*.js']),
