@@ -22,43 +22,44 @@ $font-color = #555
 
 // Colors (via http://clrs.cc - slightly modded)
 
+
+
+$transparencies = 0.3, 0.5, 0.75
+
+$colors = {
+	blue1:#2A3A41
+	blue2:#3E5763
+	blue3:#BCD5DD
+	gray:#EFEFEF
+	orange:#FF5027
+	purple:#311A30
+	violet:#530F36
+	maroon:#821839
+	red:#CE2644
+}
+
+for prop, val in $colors
+	for t, i in $transparencies
+		$colors[prop+'t'+i] = rgba(red(val),green(val),blue(val),t)
+
+
+
 $gradient = {
-	background: #ef443f
-	background: -moz-linear-gradient(50deg, #ef443f 0%, #ce2644 30%, #311a30 100%)
-	background: -webkit-linear-gradient(50deg, #ef443f 0%,#ce2644 30%,#311a30 100%)
-	background: linear-gradient(50deg, #ef443f 0%,#ce2644 30%,#311a30 100%)
+	background: $colors.blue1
+	background: -moz-linear-gradient(50deg, $colors.blue1 0%, $colors.blue2 30%, $colors.blue3 100%)
+	background: -webkit-linear-gradient(50deg, $colors.blue1 0%, $colors.blue2 30%,$colors.blue3 100%)
+	background: linear-gradient(50deg, $colors.blue1 0%,$colors.blue2 30%,$colors.blue3 100%)
 }
 $gradientOverlay = {
-	background: #ef443f
-	background: -moz-linear-gradient(50deg, rgba(239, 68, 63,0.5) 0%, rgba(206, 38, 68, 0.5) 30%, rgba(49, 26, 48, 0.5) 100%)
-	background: -webkit-linear-gradient(50deg, rgba(239, 68, 63,0.5) 0%, rgba(206, 38, 68, 0.5) 30%, rgba(49, 26, 48, 0.5) 100%)
-	background: linear-gradient(50deg, rgba(239, 68, 63,0.5) 0%, rgba(206, 38, 68, 0.5) 30%, rgba(49, 26, 48, 0.5) 100%)
+	background: $colors.blue1
+	background: -moz-linear-gradient(50deg, $colors.blue1t1 0%, $colors.blue2t1 30%, $colors.blue3t1 100%)
+	background: -webkit-linear-gradient(50deg, $colors.blue1t1 0%, $colors.blue2t1 30%, $colors.blue3t1 100%)
+	background: linear-gradient(50deg, $colors.blue1t1 0%, $colors.blue2t1 30%, $colors.blue3t1 100%)
 }
 
 $gradientOverlay2 = {
-	background: #ef443f
-	background: -moz-linear-gradient(50deg, rgba(239, 68, 63,0.3) 0%, rgba(206, 38, 68, 0.2) 30%, rgba(49, 26, 48, 0.0) 100%)
-	background: -webkit-linear-gradient(50deg, rgba(239, 68, 63,0.3) 0%, rgba(206, 38, 68, 0.3) 30%, rgba(49, 26, 48, 0.0) 100%)
-	background: linear-gradient(50deg, rgba(239, 68, 63,0.3) 0%, rgba(206, 38, 68, 0.2) 30%, rgba(49, 26, 48, 0.0) 100%)
+	background: $colors.blue1
+	background: -moz-linear-gradient(50deg, $colors.blue1t0 0%, $colors.blue2t0 30%, $colors.blue3t0 100%)
+	background: -webkit-linear-gradient(50deg, $colors.blue1t0 0%, rgba(206, 38, 68, 0.3) 30%, rgba(49, 26, 48, 0.0) 100%)
+	background: linear-gradient(50deg, $colors.blue1t0 0%, $colors.blue2t0 30%, $colors.blue3t0 100%)
 }
-
-
-$purple     = #311A30
-$violet     = #530F36
-$maroon     = #821839
-$red        = #CE2644
-$orange     = #EF443F
-
-// Default color
-$default-color = $blue
-
-// Text highlight color
-$highlight-color = $blue
-
-// Custom image base path for axis mixins
-$img-path = '/img/'
-
-// Ligatures
-$ligatures = false
-
-$default-font = $openSans
