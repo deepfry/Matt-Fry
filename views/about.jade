@@ -22,4 +22,4 @@ block content
 				.row.center.pt-xlg.mt-xlg.pb-lg
 					.col-md-12
 						h2.font-weight-normal.custom-font-size-1.mb-lg= contentful.about[0].title
-						p= contentful.about[0].text
+						.md!= md(contentful.about[0].text)

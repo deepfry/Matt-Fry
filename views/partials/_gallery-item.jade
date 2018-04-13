@@ -55,12 +55,12 @@ block content
 				.col-sm-12
 					- var date = new Date(entry.date);
 					h1.unmarg= entry.title
-					h3= date.getFullYear()
+					//-h3= date.getFullYear()
 					hr
 			.row
 				.col-sm-12
-					p= entry.description
-					!= entry.signature.fields.text
+					.md!= md(entry.description)
+					.md!= md(entry.signature.fields.text)
 			.row
 				.col-sm-12
 					h3 Share
