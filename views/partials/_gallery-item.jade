@@ -60,7 +60,8 @@ block content
 			.row
 				.col-sm-12
 					.md!= md(entry.description)
-					.md!= md(entry.signature.fields.text)
+					if entry.signature.fields.text != undefined
+						.md!= md(entry.signature.fields.text)
 			.row
 				.col-sm-12
 					h3 Share
