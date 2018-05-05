@@ -10,5 +10,4 @@ $('input, textarea').keyup(function(){
 $(document).ready(function(){
 	$('#share-icons .facebook-share').attr('href', "https://www.facebook.com/dialog/share?app_id=158575354726891&display=popup&href="+window.location.href+"&quote="+encodeURIComponent($('#page-description').attr('content')))
 	$('#share-icons .twitter-share').attr('href', "http://twitter.com/share?url="+window.location.href+"&hashtags=mattfry,mattfryarts")
-
 })

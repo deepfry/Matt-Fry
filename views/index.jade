@@ -78,15 +78,3 @@ block content
 											span.thumb-info-title
 												span.thumb-info-inner Presentation
 												span.thumb-info-type Brand
-	script.
-		if (window.netlifyIdentity) {
-			window.netlifyIdentity.on("init", user => {
-				if (!user) {
-					window.netlifyIdentity.on("login", () => {
-						document.location.href = "/admin/";
-					});
-				}
-			});
-		}
-
-						
