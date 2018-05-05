@@ -17,6 +17,30 @@ block content
 						strong Error!
 						|  There was an error sending your message.
 						span#mailErrorMessage.font-size-xs.mt-sm.display-block
+					form.contactFormCustom.form(novalidate='novalidate' name='Contacto Form', netlify-honeypot="website" style="display:none")
+						.row.hidden
+							label Don’t fill this out: 
+								input(name="website")
+						.row
+							.form-group.align-left
+								.col-md-12
+									input#name.form-control.validate-required(type='text', placeholder='Your Name', value='', data-msg-required='Please enter your name.', maxlength='100', name='name', required='', aria-required='true')
+						.row
+							.form-group.align-left
+								.col-md-12
+									input#email.form-control.validate-email(type='email', placeholder='Your E-mail', value='', data-msg-required='Please enter your email address.', data-msg-email='Please enter a valid email address.', maxlength='100', name='email', required='', aria-required='true')
+						.row
+							.form-group.align-left
+								.col-md-12
+									input#subject.form-control.validate-required(type='text', placeholder='Subject', value='', data-msg-required='Please enter the subject.', maxlength='100', name='subject', required='', aria-required='true')
+						.row
+							.form-group.align-left
+								.col-md-12
+									textarea#message.form-control.validate-required(maxlength='5000', placeholder='Message', data-msg-required='Please enter your message.', rows='10', name='message', required='', aria-required='true')
+						.row
+							.col-md-12
+								input.btn.btn-borders.btn-lg.text-uppercase.font-weight-semibold(type='submit', value='Send Message', data-loading-text='Loading...')
+
 					form#contactFormCustom.form(novalidate='novalidate' netlify name='Contact Form', netlify-honeypot="bot-field")
 						.row.hidden
 							label Don’t fill this out: 
